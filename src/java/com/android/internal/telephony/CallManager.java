@@ -634,7 +634,7 @@ public final class CallManager {
             int currMode = audioManager.getMode();
             if ((currMode != AudioManager.MODE_IN_CALL) && !(ringingPhone instanceof SipPhone)) {
                 Log.d(LOG_TAG, "setAudioMode Setting audio mode from " +
-                                currMode + " to " + AudioManager.MODE_IN_CALL);
+                        currMode + " to " + AudioManager.MODE_IN_CALL);
                 audioManager.setMode(AudioManager.MODE_IN_CALL);
                 mSpeedUpAudioForMtCall = true;
             }

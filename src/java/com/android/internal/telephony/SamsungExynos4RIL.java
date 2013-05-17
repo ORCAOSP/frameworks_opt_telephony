@@ -917,13 +917,13 @@ public class SamsungExynos4RIL extends RIL implements CommandsInterface {
             int mCdmaDbm = response[2];
             Log.d(LOG_TAG, "responseSignalStrength-fallback (raw): gsmSignalStrength=" + mCdmaDbm);
 
-	        if (mCdmaDbm < 0) {
-	            mGsmSignalStrength = 99;
-	        } else if (mCdmaDbm > 31 && mCdmaDbm != 99) {
-	            mGsmSignalStrength = 31;
-	        } else {
-	            mGsmSignalStrength = mCdmaDbm;
-	        }
+            if (mCdmaDbm < 0) {
+                mGsmSignalStrength = 99;
+            } else if (mCdmaDbm > 31 && mCdmaDbm != 99) {
+                mGsmSignalStrength = 31;
+            } else {
+                mGsmSignalStrength = mCdmaDbm;
+            }
             Log.d(LOG_TAG, "responseSignalStrength-fallback (corrected): gsmSignalStrength=" + mGsmSignalStrength);
         }
 

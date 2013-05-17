@@ -89,6 +89,11 @@ public class SamsungExynos3RIL extends RIL implements CommandsInterface {
     @Override
     public void
     setRadioPower(boolean on, Message result) {
+        boolean allow = SystemProperties.getBoolean("persist.ril.enable", true);
+        if (!allow) {
+            return;
+        }
+
         RILRequest rr = RILRequest.obtain(RIL_REQUEST_RADIO_POWER, result);
 
         if (on) {
@@ -346,9 +351,9 @@ public class SamsungExynos3RIL extends RIL implements CommandsInterface {
 
         switch(response) {
         /*
-				cat libs/telephony/ril_unsol_commands.h \
-				| egrep "^ *{RIL_" \
-				| sed -re 's/\{([^,]+),[^,]+,([^}]+).+/case \1: \2(rr, p); break;/'
+                cat libs/telephony/ril_unsol_commands.h \
+                | egrep "^ *{RIL_" \
+                | sed -re 's/\{([^,]+),[^,]+,([^}]+).+/case \1: \2(rr, p); break;/'
          */
 
         case RIL_UNSOL_NITZ_TIME_RECEIVED: ret =  responseString(p); break;
